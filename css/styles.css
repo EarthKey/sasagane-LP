@@ -15,7 +15,7 @@ body{
   margin:0; font-size:var(--text);
   background: linear-gradient(180deg, #0b0b12, #0a0a10);
   position:relative;
-  color:var(--fg); font-family:system-ui, -apple-system, "Segoe UI", Roboto, "Hiragino Kaku Gothic ProN", "Noto Sans JP", sans-serif; line-height:1.7;
+  color:var(--fg); font-family:'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif; line-height:1.7;
 }
 /* 下層：墨テクスチャ */
 body::before{
@@ -27,10 +27,10 @@ body::after{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
   background: url("assets/back2.png") repeat; opacity:.35; will-change: opacity, transform;
 }
-/* 蛍の光パーティクル（最前面の装飾レイヤー） */
-.bg-fireflies{
-  position:fixed; inset:0; background: url("assets/back3.png") repeat; opacity:.50;
-  pointer-events:none; z-index:-1; animation: twinkle 12s ease-in-out infinite alternate; will-change: opacity, transform;
+/* ループWebP アンビエント背景（最前面装飾） */
+.bg-ambient{
+  position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.45;
+  background: url("assets/0823_104716_EndFrame_00001_.webp") center / cover no-repeat;
 }
 @keyframes twinkle{
   0%{ opacity:.4; transform: scale(1); }
@@ -39,7 +39,7 @@ body::after{
 }
 img{max-width:100%; height:auto; display:block}
 a{color:var(--accent); text-decoration:none}
-h1,h2{letter-spacing:.02em; margin:0 0 .6rem}
+h1,h2{letter-spacing:.02em; margin:0 0 .6rem; font-family:'Yuji Syuku','Noto Serif JP',serif}
 h1{ font-size: var(--h1); }
 h2{ font-size: var(--h2); }
 
