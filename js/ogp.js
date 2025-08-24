@@ -15,18 +15,30 @@
       el.innerHTML = `<div>プレビューを取得できませんでした。<a href="${el.dataset.url}" target="_blank" rel="noopener">リンクを開く</a></div>`;
       return;
     }
-    const title = data.title || data.ogTitle || data.twitterTitle || '(無題)';
+    // Avoid placeholder title and domain fallback like "x.com"
+    const title = data.title || data.ogTitle || data.twitterTitle || '';
     const desc = data.description || data.ogDescription || data.twitterDescription || '';
     const img = data.image || data.ogImage || data.twitterImage || '';
-    const site = data.siteName || data.ogSiteName || new URL(data.finalUrl || data.url).hostname;
+    const site = data.siteName || data.ogSiteName || '';
+
+    const parts = [];
+    if (title) {
+      parts.push(`<a class="ogp-card__title" href="${data.finalUrl || data.url}" target="_blank" rel="noopener">${escapeHtml(title)}</a>`);
+    }
+    if (desc) {
+      parts.push(`<p class="ogp-card__desc">${escapeHtml(desc)}</p>`);
+    }
+    if (site && site.toLowerCase() !== 'x.com') {
+      parts.push(`<div class="ogp-card__site">${escapeHtml(site)}</div>`);
+    }
+    if (parts.length === 0) {
+      // Minimal fallback without showing placeholder title or hostname
+      parts.push(`<a class="ogp-card__title" href="${data.finalUrl || data.url}" target="_blank" rel="noopener">リンクを開く</a>`);
+    }
 
     el.innerHTML = `
       ${img ? `<img class="ogp-card__img" src="${img}" alt="">` : ''}
-      <div class="ogp-card__body">
-        <a class="ogp-card__title" href="${data.finalUrl || data.url}" target="_blank" rel="noopener">${escapeHtml(title)}</a>
-        ${desc ? `<p class="ogp-card__desc">${escapeHtml(desc)}</p>` : ''}
-        <div class="ogp-card__site">${escapeHtml(site)}</div>
-      </div>
+      <div class="ogp-card__body">${parts.join('')}</div>
     `;
   }
 
@@ -49,4 +61,3 @@
     init();
   }
 })();
-
