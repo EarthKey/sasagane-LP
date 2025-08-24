@@ -112,6 +112,12 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
     letter-spacing: .01em;
     /* readable shadow instead of outline */
     text-shadow: 0 2px 6px rgba(0,0,0,.85), 0 0 1px rgba(0,0,0,.9);
+    /* deep purple highlight behind text */
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, rgba(63,53,170,.95), rgba(63,53,170,.88));
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.03), 0 6px 22px rgba(0,0,0,.35);
   }
 
 .footer{padding:36px 20px; border-top:1px solid var(--line); text-align:center; opacity:.9}
