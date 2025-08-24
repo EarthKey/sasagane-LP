@@ -3,6 +3,9 @@
   // ここにサムネ化したいXのURLを追加してください（複数対応）
   const X_URLS = [
     'https://x.com/EarthGigantea/status/1956917956883145095/history',
+    'https://x.com/EarthGigantea/status/1959430857061802093',
+    'https://x.com/EarthGigantea/status/1959042911036674556',
+    'https://x.com/EarthGigantea/status/1959163700457480345',
   ];
 
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
