@@ -13,7 +13,8 @@ html, body{ min-height:100%; }
 /* ページ全体の背景（テクスチャレイヤー構成） */
 body{
   margin:0; font-size:var(--text);
-  background: linear-gradient(180deg, #0b0b12, #0a0a10);
+  /* 黒の割合を下げる（50%透過） */
+  background: linear-gradient(180deg, rgba(11,11,18,.5), rgba(10,10,16,.5));
   position:relative;
   color:var(--fg); font-family:'Noto Serif JP', "Hiragino Mincho ProN", "Yu Mincho", serif; line-height:1.7;
 }
