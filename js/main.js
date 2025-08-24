@@ -39,6 +39,23 @@ function initFadeIn() {
     if (!el.classList.contains('fade-in')) el.classList.add('fade-in');
   });
 
+  // Stagger the initial above-the-fold elements a bit so the page
+  // reveals gracefully within ~1–2s, then continue on scroll.
+  const vh = window.innerHeight || document.documentElement.clientHeight;
+  let order = 0;
+  nodes.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const aboveFold = rect.top < vh * 0.9; // within first view
+    if (aboveFold) {
+      // base 200ms + step 120ms per element, cap at 800ms
+      const delay = Math.min(200 + order * 120, 800);
+      el.style.setProperty('--fdly', `${delay}ms`);
+      order++;
+    } else {
+      el.style.removeProperty('--fdly');
+    }
+  });
+
   // Defer observer setup to next frame to ensure initial styles apply
   const setup = () => {
     const io = new IntersectionObserver((entries) => {
@@ -48,7 +65,7 @@ function initFadeIn() {
           io.unobserve(entry.target);
         }
       });
-    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+    }, { rootMargin: '0px 0px -20% 0px', threshold: 0.1 });
 
     nodes.forEach(el => io.observe(el));
   };
