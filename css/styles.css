@@ -102,7 +102,7 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   }
 
   /* Programs（出演番組） */
-  .programs__thumb{ width:100%; max-width:560px; display:block; margin:10px auto 16px; border-radius:10px; border:1px solid var(--line); }
+  .programs__thumb{ width:100%; max-width:840px; display:block; margin:10px auto 16px; border-radius:10px; border:1px solid var(--line); }
   .programs{ gap: 14px; }
   .programs li{
     display: block;
