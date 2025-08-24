@@ -89,7 +89,7 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   /* Statement layout */
   .statement{display:grid; grid-template-columns: 1fr 1fr; gap:16px; align-items:center}
   .statement__quote{font-size:clamp(1.1rem, 1vw + 1rem, 1.6rem); line-height:1.75; margin:0; padding:10px 12px; border-left:4px solid var(--accent); background:rgba(255,255,255,.02); border-radius:8px}
-  .statement__image{width:100%; height:auto; border-radius:12px; border:1px solid var(--line); display:block}
+  .statement__image{width:60%; height:auto; border-radius:12px; border:1px solid var(--line); display:block; justify-self:end}
   .statement__cta{text-align:center; margin-top:14px}
   .btn--glow{box-shadow:0 0 0 rgba(200,168,78,0.0), 0 0 24px rgba(200,168,78,.35); transition: box-shadow .25s ease, transform .2s ease}
   .btn--glow:hover{box-shadow:0 0 12px rgba(200,168,78,.45), 0 0 36px rgba(200,168,78,.55); transform: translateY(-1px)}
@@ -108,6 +108,7 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
     .hero{padding:56px 16px}
     .btn--lg{width:100%; max-width:420px}
     .statement{grid-template-columns:1fr}
+    .statement__image{width:100%; justify-self:stretch}
   }
 
 /* Sakura falling effect */
