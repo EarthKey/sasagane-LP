@@ -159,6 +159,26 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   .sakura{display:none}
 }
 
+/* ===== Scroll Fade-in (global) ===== */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 800ms ease-out,
+      transform 800ms ease-out;
+    will-change: opacity, transform;
+  }
+  .fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/* 低モーション設定の利用者にはアニメを抑制 */
+@media (prefers-reduced-motion: reduce) {
+  .fade-in { opacity: 1 !important; transform: none !important; transition: none !important; }
+}
+
 /* OGP-like link preview card */
 .ogp-card{display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px;}
 .ogp-card__img{width:120px; height:120px; object-fit:cover; border-radius:8px; border:1px solid var(--line); background:#222; flex:0 0 120px}

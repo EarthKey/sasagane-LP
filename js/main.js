@@ -22,3 +22,36 @@ document.addEventListener('DOMContentLoaded', () => {
     container.appendChild(petal);
   }
 });
+
+// ===== Scroll Fade-in with IntersectionObserver
+(function () {
+  // モーション控えめ設定なら何もしない
+  const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return;
+
+  // 対象: セクションや主要カード類を包括的に
+  const selectors = [
+    'header', 'footer', 'section', 'main',
+    '.cards li', '.card', 'figure', '.grid > *',
+    '.btn', '.btn--lg', '.hero', '#hero', '.programs li'
+  ];
+  const nodes = document.querySelectorAll(selectors.join(','));
+
+  // 既にクラスが付いていなければ付与
+  nodes.forEach(el => {
+    if (!el.classList.contains('fade-in')) el.classList.add('fade-in');
+  });
+
+  // ビューポートに入ったら可視化
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // 一度表示したら監視解除（無駄なコスト削減）
+        io.unobserve(entry.target);
+      }
+    });
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.1 });
+
+  nodes.forEach(el => io.observe(el));
+})();
