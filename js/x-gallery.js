@@ -1,6 +1,6 @@
 (function () {
   const GRID_ID = 'tweet-grid';
-  // ここにサムネ化したいXのURLを追加してください
+  // ここにサムネ化したいXのURLを追加してください（複数対応）
   const X_URLS = [
     'https://x.com/EarthGigantea/status/1956917956883145095/history',
   ];
@@ -18,22 +18,27 @@
     }
   }
 
-  function createCard({ url, image, title }) {
+  function createShell(url) {
     const a = document.createElement('a');
     a.href = url;
     a.target = '_blank';
     a.rel = 'noopener';
-    a.className = 'tweet-card';
+    a.dataset.url = url;
+    a.className = 'tweet-card loading';
     if (!reduce) a.classList.add('fade-in');
-
-    if (image) {
-      a.style.setProperty('--bg', `url('${image}')`);
-    }
     a.innerHTML = `
       <span class="tweet-card__overlay" aria-hidden="true"></span>
-      <span class="tweet-card__label">${escapeHtml(title || 'View on X')}</span>
+      <span class="tweet-card__label">読み込み中…</span>
     `;
     return a;
+  }
+
+  function fillCard(a, meta) {
+    const img = meta && (meta.image || meta.ogImage || meta.twitterImage);
+    const title = meta && (meta.ogTitle || meta.twitterTitle || meta.title) || 'View on X';
+    if (img) a.style.setProperty('--bg', `url('${img}')`);
+    a.querySelector('.tweet-card__label').textContent = title;
+    a.classList.remove('loading');
   }
 
   function escapeHtml(s) {
@@ -44,15 +49,27 @@
     const grid = document.getElementById(GRID_ID);
     if (!grid) return;
 
-    for (const url of X_URLS) {
-      const meta = await fetchOGP(url);
-      const img = meta && (meta.image || meta.ogImage || meta.twitterImage);
-      const title = meta && (meta.ogTitle || meta.twitterTitle || meta.title);
-      const card = createCard({ url, image: img, title });
-      grid.appendChild(card);
-      // 即時可視化（IO初期化済みでない動的要素のため）
-      if (!reduce) requestAnimationFrame(() => card.classList.add('visible'));
-    }
+    // まずはプレースホルダを並べる
+    const cards = X_URLS.map(url => {
+      const shell = createShell(url);
+      grid.appendChild(shell);
+      return shell;
+    });
+
+    // 遅延ロード: ビューポートに入ったときだけOGPを取得
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(async (entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        io.unobserve(el);
+        const url = el.dataset.url;
+        const meta = await fetchOGP(url);
+        fillCard(el, meta);
+        if (!reduce) requestAnimationFrame(() => el.classList.add('visible'));
+      });
+    }, { rootMargin: '0px 0px 10% 0px', threshold: 0.1 });
+
+    cards.forEach(el => io.observe(el));
   }
 
   if (document.readyState === 'loading') {
@@ -61,4 +78,3 @@
     init();
   }
 })();
-
