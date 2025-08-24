@@ -23,15 +23,15 @@ body::before{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-3;
   background: url("assets/back1.png") repeat; opacity:.40; will-change: opacity, transform;
 }
-/* 上層：霞（中間） */
+/* 最前面：指定PNG（常に表示） */
 body::after{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
-  background: url("assets/back2.png") repeat; opacity:.35; will-change: opacity, transform;
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
+  background: url("assets/0823_105845_Share_00001.png") center / cover no-repeat; opacity:.20; will-change: opacity, transform;
 }
-/* ループWebP アンビエント背景（最前面装飾） */
+/* 中間：back3（パーティクル等） */
 .bg-ambient{
-  position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.20;
-  background: url("assets/0823_105845_Share_00001.png") center / cover no-repeat;
+  position:fixed; inset:0; pointer-events:none; z-index:-2; opacity:.35;
+  background: url("assets/back3.png") repeat;
 }
 @keyframes twinkle{
   0%{ opacity:.4; transform: scale(1); }
