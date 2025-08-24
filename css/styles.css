@@ -135,3 +135,11 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   *{ animation: none !important; transition: none !important; }
   .sakura{display:none}
 }
+
+/* OGP-like link preview card */
+.ogp-card{display:flex; gap:12px; align-items:flex-start; background:var(--card); border:1px solid var(--line); border-radius:12px; padding:12px;}
+.ogp-card__img{width:120px; height:120px; object-fit:cover; border-radius:8px; border:1px solid var(--line); background:#222; flex:0 0 120px}
+.ogp-card__body{flex:1 1 auto; min-width:0}
+.ogp-card__title{display:inline-block; font-weight:700; color:var(--fg); margin:0 0 6px}
+.ogp-card__desc{color:var(--muted); font-size:.9rem; margin:.1rem 0}
+.ogp-card__site{color:var(--muted); font-size:.8rem; margin-top:6px}
