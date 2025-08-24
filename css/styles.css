@@ -89,13 +89,11 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   }
 
   /* Programs（出演番組） */
+  .programs__thumb{ width:100%; max-width:560px; display:block; margin:10px auto 16px; border-radius:10px; border:1px solid var(--line); }
   .programs{ gap: 14px; }
   .programs li{
-    display: grid; grid-template-columns: 140px 1fr; gap: 14px; align-items: center;
+    display: block;
     background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 12px;
-  }
-  .programs .thumb{
-    width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); display: block;
   }
   .programs .info strong{ font-size: 1.05rem; display: inline-block; margin-bottom: 4px; }
   .programs .info p{ margin: .2rem 0; }
@@ -111,7 +109,6 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   @media (max-width:760px){
     .hero{padding:56px 16px}
     .btn--lg{width:100%; max-width:420px}
-    .programs li{ grid-template-columns: 1fr; }
   }
 
 /* Sakura falling effect */
