@@ -195,6 +195,10 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
 /* Tweet custom thumbnail link */
 /* .tweet-thumb styles removed (thumbnail deleted) */
 
+/* Responsive video embed (16:9) */
+.video-embed{ position: relative; width: 100%; aspect-ratio: 16 / 9; margin-top: 8px; border-radius: 12px; overflow: hidden; border:1px solid var(--line); box-shadow: 0 6px 24px rgba(0,0,0,.25); }
+.video-embed iframe{ position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display:block; }
+
 /* X gallery grid */
 .tweet-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
 @media (max-width: 980px){ .tweet-grid{ grid-template-columns: repeat(2,1fr); } }
