@@ -105,6 +105,19 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   .programs .info strong{ font-size: 1.05rem; display: inline-block; margin-bottom: 4px; }
   .programs .info p{ margin: .2rem 0; }
   .muted{ color: var(--muted); font-size: .9rem; margin-top: 8px; }
+  /* About lead text (outlined + larger) */
+  #about .about__lead{
+    font-size: clamp(1.05rem, .6vw + 1rem, 1.3rem);
+    font-weight: 700;
+    letter-spacing: .01em;
+    /* Outline (fallback via text-shadow) */
+    -webkit-text-stroke: .6px #000;
+    text-shadow:
+      -1px -1px 0 #000,
+       1px -1px 0 #000,
+      -1px  1px 0 #000,
+       1px  1px 0 #000;
+  }
 
 .footer{padding:36px 20px; border-top:1px solid var(--line); text-align:center; opacity:.9}
 .footer__links a{margin:0 10px}
