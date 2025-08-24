@@ -189,3 +189,16 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
 
 /* Tweet custom thumbnail link */
 /* .tweet-thumb styles removed (thumbnail deleted) */
+
+/* X gallery grid */
+.tweet-grid{display:grid; gap:14px; grid-template-columns:repeat(3,1fr)}
+@media (max-width: 980px){ .tweet-grid{ grid-template-columns: repeat(2,1fr); } }
+@media (max-width: 560px){ .tweet-grid{ grid-template-columns: 1fr; } }
+.tweet-card{
+  position:relative; display:block; aspect-ratio: 16 / 9; border-radius:12px;
+  border:1px solid var(--line); overflow:hidden; background:#1a1a28;
+  background-image: var(--bg); background-size: cover; background-position: center;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+}
+.tweet-card__overlay{position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45));}
+.tweet-card__label{position:absolute; left:12px; bottom:10px; font-weight:700; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.8)}
