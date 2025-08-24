@@ -9,6 +9,7 @@
   --text: clamp(0.95rem, .3vw + .9rem, 1.05rem);
 }
 *{box-sizing:border-box}
+html, body{ min-height:100%; }
 /* ページ全体の背景（テクスチャレイヤー構成） */
 body{
   margin:0; font-size:var(--text);
@@ -18,14 +19,18 @@ body{
 }
 /* 下層：墨テクスチャ */
 body::before{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
-  background: url("assets/back1.png") repeat; opacity:.4;
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-3;
+  background: url("assets/back1.png") repeat; opacity:.40; will-change: opacity, transform;
 }
-/* 上層：蛍の光パーティクル（アニメ） */
+/* 上層：霞（中間） */
 body::after{
-  content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
-  background: url("assets/back3.png") repeat; opacity:.5;
-  animation: twinkle 12s infinite ease-in-out alternate;
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
+  background: url("assets/back2.png") repeat; opacity:.35; will-change: opacity, transform;
+}
+/* 蛍の光パーティクル（最前面の装飾レイヤー） */
+.bg-fireflies{
+  position:fixed; inset:0; background: url("assets/back3.png") repeat; opacity:.50;
+  pointer-events:none; z-index:-1; animation: twinkle 12s ease-in-out infinite alternate; will-change: opacity, transform;
 }
 @keyframes twinkle{
   0%{ opacity:.4; transform: scale(1); }
