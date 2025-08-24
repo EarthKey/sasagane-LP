@@ -30,7 +30,7 @@ body::after{
 }
 /* ループWebP アンビエント背景（最前面装飾） */
 .bg-ambient{
-  position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.45;
+  position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.20;
   background: url("assets/0823_104716_EndFrame_00001_.webp") center / cover no-repeat;
 }
 @keyframes twinkle{
