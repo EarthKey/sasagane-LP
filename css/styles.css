@@ -21,10 +21,16 @@ body::before{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-2;
   background: url("assets/back1.png") repeat; opacity:.4;
 }
-/* 上層：霞テクスチャ */
+/* 上層：蛍の光パーティクル（アニメ） */
 body::after{
   content:""; position:fixed; inset:0; pointer-events:none; z-index:-1;
-  background: url("assets/back2.png") repeat; opacity:.35;
+  background: url("assets/back3.png") repeat; opacity:.5;
+  animation: twinkle 12s infinite ease-in-out alternate;
+}
+@keyframes twinkle{
+  0%{ opacity:.4; transform: scale(1); }
+  50%{ opacity:.6; transform: scale(1.05); }
+  100%{ opacity:.4; transform: scale(1); }
 }
 img{max-width:100%; height:auto; display:block}
 a{color:var(--accent); text-decoration:none}
