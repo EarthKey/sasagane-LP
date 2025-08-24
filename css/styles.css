@@ -188,5 +188,4 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
 .ogp-card__site{color:var(--muted); font-size:.8rem; margin-top:6px}
 
 /* Tweet custom thumbnail link */
-.tweet-thumb{display:block; max-width:720px; margin:10px auto 16px; border-radius:12px; border:1px solid var(--line); overflow:hidden; box-shadow:0 6px 24px rgba(0,0,0,.25)}
-.tweet-thumb img{display:block; width:100%; height:auto}
+/* .tweet-thumb styles removed (thumbnail deleted) */
