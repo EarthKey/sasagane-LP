@@ -38,9 +38,17 @@
 
   function fillCard(a, meta) {
     const img = meta && (meta.image || meta.ogImage || meta.twitterImage);
-    const title = meta && (meta.ogTitle || meta.twitterTitle || meta.title) || 'View on X';
-    if (img) a.style.setProperty('--bg', `url('${img}')`);
-    a.querySelector('.tweet-card__label').textContent = title;
+    const title = (meta && (meta.ogTitle || meta.twitterTitle || meta.title)) || 'Xの投稿を開く';
+    const labelEl = a.querySelector('.tweet-card__label');
+    labelEl.textContent = title;
+    if (img) {
+      a.style.setProperty('--bg', `url('${img}')`);
+      a.classList.remove('no-image');
+    } else {
+      a.style.removeProperty('--bg');
+      a.classList.add('no-image');
+    }
+    a.setAttribute('aria-label', title);
     a.classList.remove('loading');
   }
 

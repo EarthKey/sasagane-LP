@@ -213,3 +213,15 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   linear-gradient(90deg, rgba(255,255,255,.04), rgba(255,255,255,.02) 40%, rgba(255,255,255,.04)); }
 .tweet-card__overlay{position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.0), rgba(0,0,0,.45));}
 .tweet-card__label{position:absolute; left:12px; bottom:10px; font-weight:700; color:#fff; text-shadow:0 2px 6px rgba(0,0,0,.8)}
+
+/* Text-only fallback (no image available) */
+.tweet-card.no-image{
+  background: var(--card);
+  aspect-ratio: auto;
+  min-height: 64px;
+  display: flex;
+  align-items: center;
+  padding: 12px 14px;
+}
+.tweet-card.no-image .tweet-card__overlay{ display:none; }
+.tweet-card.no-image .tweet-card__label{ position: static; text-shadow: none; color: var(--fg); }
