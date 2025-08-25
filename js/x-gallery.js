@@ -15,6 +15,8 @@
     'https://x.com/EarthGigantea/status/1959858281838694710',
     'https://x.com/EarthGigantea/status/1959567152262062271',
     'https://x.com/EarthGigantea/status/1959912101096694106',
+    // さらに追加
+    'https://x.com/EarthGigantea/status/1958509076658434275',
   ];
   const GRID_URLS = ALL_URLS.filter(u => u !== FEATURED_URL);
 
@@ -28,6 +30,7 @@
     'https://x.com/EarthGigantea/status/1959858281838694710': '投票権（CNGT）編',
     'https://x.com/EarthGigantea/status/1959567152262062271': 'ワンドロ大会編',
     'https://x.com/EarthGigantea/status/1959912101096694106': 'ささがね　MV編',
+    'https://x.com/EarthGigantea/status/1958509076658434275': 'ささがね誕生編',
   };
 
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
