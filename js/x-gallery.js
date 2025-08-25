@@ -8,6 +8,14 @@
     'https://x.com/EarthGigantea/status/1959163700457480345',
   ];
 
+  // 各URLに表示したいカスタムタイトル（指定がある場合）
+  const CUSTOM_TITLES = {
+    'https://x.com/EarthGigantea/status/1956917956883145095/history': 'CNPトレカ編',
+    'https://x.com/EarthGigantea/status/1959430857061802093': 'にんセレ参加編',
+    'https://x.com/EarthGigantea/status/1959042911036674556': 'クリプトニンジャ咲耶OP編',
+    'https://x.com/EarthGigantea/status/1959163700457480345': 'クリプトニンジャオンライン編',
+  };
+
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   async function fetchOGP(url) {
@@ -38,7 +46,8 @@
 
   function fillCard(a, meta) {
     const img = meta && (meta.image || meta.ogImage || meta.twitterImage);
-    const title = (meta && (meta.ogTitle || meta.twitterTitle || meta.title)) || 'Xの投稿を開く';
+    const overrideTitle = CUSTOM_TITLES[a.dataset.url];
+    const title = overrideTitle || (meta && (meta.ogTitle || meta.twitterTitle || meta.title)) || 'Xの投稿を開く';
     const labelEl = a.querySelector('.tweet-card__label');
     labelEl.textContent = title;
     if (img) {
