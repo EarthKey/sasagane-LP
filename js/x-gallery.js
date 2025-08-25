@@ -9,7 +9,7 @@
     'https://x.com/EarthGigantea/status/1956917956883145095/history',
     'https://x.com/EarthGigantea/status/1959430857061802093',
     'https://x.com/EarthGigantea/status/1959042911036674556',
-    'https://x.com/EarthGigantea/status/1959163700457480345',
+    'https://x.com/EarthGigantea/status/1958050239568572489',
     // 追加4件
     'https://x.com/EarthGigantea/status/1959812991295316296',
     'https://x.com/EarthGigantea/status/1959858281838694710',
@@ -25,7 +25,7 @@
     'https://x.com/EarthGigantea/status/1956917956883145095/history': 'CNPトレカ編',
     'https://x.com/EarthGigantea/status/1959430857061802093': 'にんセレ参加編',
     'https://x.com/EarthGigantea/status/1959042911036674556': 'クリプトニンジャ咲耶OP編',
-    'https://x.com/EarthGigantea/status/1959163700457480345': 'クリプトニンジャオンライン編',
+    'https://x.com/EarthGigantea/status/1958050239568572489': 'クリプトニンジャオンライン編',
     'https://x.com/EarthGigantea/status/1959812991295316296': 'アースキー対談編',
     'https://x.com/EarthGigantea/status/1959858281838694710': '投票権（CNGT）編',
     'https://x.com/EarthGigantea/status/1959567152262062271': 'ワンドロ大会編',
