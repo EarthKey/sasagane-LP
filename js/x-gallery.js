@@ -1,12 +1,22 @@
 (function () {
   const GRID_ID = 'tweet-grid';
+  const FEATURED_ID = 'tweet-featured';
+  // 目立たせる特集カード（上部中央に1枚）
+  const FEATURED_URL = 'https://x.com/EarthGigantea/status/1959812991295316296';
   // ここにサムネ化したいXのURLを追加してください（複数対応）
-  const X_URLS = [
+  const ALL_URLS = [
+    // 既存4件
     'https://x.com/EarthGigantea/status/1956917956883145095/history',
     'https://x.com/EarthGigantea/status/1959430857061802093',
     'https://x.com/EarthGigantea/status/1959042911036674556',
     'https://x.com/EarthGigantea/status/1959163700457480345',
+    // 追加4件
+    'https://x.com/EarthGigantea/status/1959812991295316296',
+    'https://x.com/EarthGigantea/status/1959858281838694710',
+    'https://x.com/EarthGigantea/status/1959567152262062271',
+    'https://x.com/EarthGigantea/status/1959912101096694106',
   ];
+  const GRID_URLS = ALL_URLS.filter(u => u !== FEATURED_URL);
 
   // 各URLに表示したいカスタムタイトル（指定がある場合）
   const CUSTOM_TITLES = {
@@ -14,6 +24,10 @@
     'https://x.com/EarthGigantea/status/1959430857061802093': 'にんセレ参加編',
     'https://x.com/EarthGigantea/status/1959042911036674556': 'クリプトニンジャ咲耶OP編',
     'https://x.com/EarthGigantea/status/1959163700457480345': 'クリプトニンジャオンライン編',
+    'https://x.com/EarthGigantea/status/1959812991295316296': 'アースキー対談編',
+    'https://x.com/EarthGigantea/status/1959858281838694710': '投票権（CNGT）編',
+    'https://x.com/EarthGigantea/status/1959567152262062271': 'ワンドロ大会編',
+    'https://x.com/EarthGigantea/status/1959912101096694106': 'ささがね　MV編',
   };
 
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -67,13 +81,24 @@
 
   async function init() {
     const grid = document.getElementById(GRID_ID);
+    const featured = document.getElementById(FEATURED_ID);
     if (!grid) return;
 
-    // まずはプレースホルダを並べる
-    const cards = X_URLS.map(url => {
+    const cards = [];
+
+    // 特集カードを先に配置（中央・大きめ）
+    if (featured && FEATURED_URL) {
+      const shell = createShell(FEATURED_URL);
+      shell.classList.add('tweet-card--featured');
+      featured.appendChild(shell);
+      cards.push(shell);
+    }
+
+    // そのほかのカードをグリッドに並べる
+    GRID_URLS.forEach(url => {
       const shell = createShell(url);
       grid.appendChild(shell);
-      return shell;
+      cards.push(shell);
     });
 
     // 遅延ロード: ビューポートに入ったときだけOGPを取得
