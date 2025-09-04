@@ -1,14 +1,14 @@
 (function () {
   const GRID_ID = 'tweet-grid';
   const FEATURED_ID = 'tweet-featured';
-  // 特集カード（上部中央に1枚）
-  const FEATURED_URL = 'https://x.com/EarthGigantea/status/1963162906574668192';
+  // 特集カード（上部中央に1枚）: アースキー対談編に固定
+  const FEATURED_URL = 'https://x.com/EarthGigantea/status/1959812991295316296';
   // 表示するXのURL一覧（順序通りに表示）: 新規4件 + これまでの全件
   const ALL_URLS = [
     // 新規4件
     'https://x.com/EarthGigantea/status/1963162906574668192', // ささがねワールド編
     'https://x.com/EarthGigantea/status/1963013770307109212', // LIFE IS MAMAGOTO編
-    'https://x.com/EarthGigantea/status/1962849293414658123', // CNOお薬手帳編
+    'https://x.com/EarthGigantea/status/1962849293414658123', // CNPお薬手帳編
     'https://x.com/EarthGigantea/status/1963528771186954396', // CNGT配布編
     // 既存（従来の掲載分）
     'https://x.com/EarthGigantea/status/1956917956883145095/history',
@@ -28,7 +28,7 @@
     // 新規4件
     'https://x.com/EarthGigantea/status/1963162906574668192': 'ささがねワールド編',
     'https://x.com/EarthGigantea/status/1963013770307109212': 'LIFE IS MAMAGOTO編',
-    'https://x.com/EarthGigantea/status/1962849293414658123': 'CNOお薬手帳編',
+    'https://x.com/EarthGigantea/status/1962849293414658123': 'CNPお薬手帳編',
     'https://x.com/EarthGigantea/status/1963528771186954396': 'CNGT配布編',
     // 既存タイトル（維持）
     'https://x.com/EarthGigantea/status/1956917956883145095/history': 'CNPトレカ編',
