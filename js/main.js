@@ -23,12 +23,17 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// ===== Scroll Fade-in with IntersectionObserver
-function initFadeIn() {
+// ===== Reveal on scroll (fade or slide) with IntersectionObserver
+function initReveal() {
   const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (reduce) return;
 
-  const selectors = [
+  const isSlide = document.body.dataset.anim === 'slide-x' || document.body.classList.contains('anim-slide-x');
+  const effectClass = isSlide ? 'slide-x' : 'fade-in';
+  // Target subset for index (images & framed blocks), wider set otherwise
+  const selectors = isSlide ? [
+    '#hero img', 'figure', '.grid > *', 'img', '.cards li', '.programs li', '.video-embed', '.ogp-card', '.tweet-card'
+  ] : [
     'header', 'footer', 'section', 'main',
     '.cards li', '.card', 'figure', '.grid > *',
     '.btn', '.btn--lg', '.hero', '#hero', '.programs li'
@@ -36,7 +41,7 @@ function initFadeIn() {
   const nodes = document.querySelectorAll(selectors.join(','));
 
   nodes.forEach(el => {
-    if (!el.classList.contains('fade-in')) el.classList.add('fade-in');
+    if (!el.classList.contains(effectClass)) el.classList.add(effectClass);
   });
 
   // Stagger the initial above-the-fold elements a bit so the page
@@ -78,7 +83,7 @@ function initFadeIn() {
 }
 
 if (document.readyState === 'loading') {
-  document.addEventListener('DOMContentLoaded', initFadeIn);
+  document.addEventListener('DOMContentLoaded', initReveal);
 } else {
-  initFadeIn();
+  initReveal();
 }
