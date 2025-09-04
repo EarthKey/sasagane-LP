@@ -185,6 +185,18 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   filter: brightness(1.08);
 }
 
+/* SNS page: glow on X cards hover */
+.sns-page .tweet-card{
+  transition: box-shadow .25s ease, filter .25s ease, transform .2s ease, border-color .25s ease;
+}
+.sns-page .tweet-card:hover,
+.sns-page .tweet-card:focus-visible{
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(200,168,78,.35), 0 0 36px rgba(200,168,78,.55), 0 10px 28px rgba(0,0,0,.35);
+  filter: brightness(1.06);
+  transform: translateY(-1px);
+}
+
 /* ===== Scroll Fade-in (global) ===== */
 @media (prefers-reduced-motion: no-preference) {
   .fade-in {
