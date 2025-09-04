@@ -120,6 +120,14 @@ main{max-width:var(--max); margin:0 auto; padding:0 var(--pad)}
   .btn--glow:hover{box-shadow:0 0 12px rgba(200,168,78,.45), 0 0 36px rgba(200,168,78,.55); transform: translateY(-1px)}
   .programs .info strong{ font-size: 1.05rem; display: inline-block; margin-bottom: 4px; }
   .programs .info p{ margin: .2rem 0; }
+
+  /* Programs thumbs (two side-by-side images) */
+  .programs__thumbs{ display:flex; gap:12px; justify-content:center; align-items:flex-start; flex-wrap:nowrap; margin:10px auto 16px; max-width:1080px; }
+  .programs__thumbs img{ flex:1 1 0; min-width:260px; max-width:520px; width:100%; border-radius:10px; border:1px solid var(--line); display:block; }
+  @media (max-width: 720px){
+    .programs__thumbs{ flex-direction:column; gap:8px; }
+    .programs__thumbs img{ max-width:100%; }
+  }
   .muted{ color: var(--muted); font-size: .9rem; margin-top: 8px; }
   /* About lead text (white text with black shadow, slightly larger) */
   #about .about__lead{
