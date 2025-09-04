@@ -1,27 +1,36 @@
 (function () {
   const GRID_ID = 'tweet-grid';
   const FEATURED_ID = 'tweet-featured';
-  // 目立たせる特集カード（上部中央に1枚）
-  const FEATURED_URL = 'https://x.com/EarthGigantea/status/1959812991295316296';
-  // ここにサムネ化したいXのURLを追加してください（複数対応）
+  // 特集カード（上部中央に1枚）
+  const FEATURED_URL = 'https://x.com/EarthGigantea/status/1963162906574668192';
+  // 表示するXのURL一覧（順序通りに表示）: 新規4件 + これまでの全件
   const ALL_URLS = [
-    // 既存4件
+    // 新規4件
+    'https://x.com/EarthGigantea/status/1963162906574668192', // ささがねワールド編
+    'https://x.com/EarthGigantea/status/1963013770307109212', // LIFE IS MAMAGOTO編
+    'https://x.com/EarthGigantea/status/1962849293414658123', // CNOお薬手帳編
+    'https://x.com/EarthGigantea/status/1963528771186954396', // CNGT配布編
+    // 既存（従来の掲載分）
     'https://x.com/EarthGigantea/status/1956917956883145095/history',
     'https://x.com/EarthGigantea/status/1959430857061802093',
     'https://x.com/EarthGigantea/status/1959042911036674556',
     'https://x.com/EarthGigantea/status/1958050239568572489',
-    // 追加4件
     'https://x.com/EarthGigantea/status/1959812991295316296',
     'https://x.com/EarthGigantea/status/1959858281838694710',
     'https://x.com/EarthGigantea/status/1959567152262062271',
     'https://x.com/EarthGigantea/status/1959912101096694106',
-    // さらに追加
     'https://x.com/EarthGigantea/status/1958509076658434275',
   ];
   const GRID_URLS = ALL_URLS.filter(u => u !== FEATURED_URL);
 
   // 各URLに表示したいカスタムタイトル（指定がある場合）
   const CUSTOM_TITLES = {
+    // 新規4件
+    'https://x.com/EarthGigantea/status/1963162906574668192': 'ささがねワールド編',
+    'https://x.com/EarthGigantea/status/1963013770307109212': 'LIFE IS MAMAGOTO編',
+    'https://x.com/EarthGigantea/status/1962849293414658123': 'CNOお薬手帳編',
+    'https://x.com/EarthGigantea/status/1963528771186954396': 'CNGT配布編',
+    // 既存タイトル（維持）
     'https://x.com/EarthGigantea/status/1956917956883145095/history': 'CNPトレカ編',
     'https://x.com/EarthGigantea/status/1959430857061802093': 'にんセレ参加編',
     'https://x.com/EarthGigantea/status/1959042911036674556': 'クリプトニンジャ咲耶OP編',
